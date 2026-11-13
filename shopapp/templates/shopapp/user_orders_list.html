@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load cache %}
+{% block title %}Заказы пользователя {{ owner.username }}{% endblock %}
+
+{% block content %}
+<h1>Заказы пользователя {{ owner.username }}</h1>
+
+{% if orders %}
+    <p>Пользователь <strong>{{ owner.username }}</strong> выполнил следующие заказы:</p>
+{% else %}
+    <p>У пользователя <strong>{{ owner.username }}</strong> ещё нет заказов.</p>
+{% endif %}
+
+{% cache 300 user_orders owner.pk %}
+    <ul>
+        {% for order in orders %}
+            <li>
+                Заказ #{{ order.pk }} —
+                {{ order.delivery_address }} —
+                {{ order.promo_code|default:"без промокода" }} —
+                {{ order.created_at|date:"d.m.Y H:i" }}
+            </li>
+        {% empty %}
+            <li>Заказов нет.</li>
+        {% endfor %}
+    </ul>
+{% endcache %}
+{% endblock %}

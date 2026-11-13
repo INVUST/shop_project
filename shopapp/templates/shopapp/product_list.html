@@ -1,0 +1,31 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}Товары{% endblock %}
+
+{% block content %}
+    <h2>Список товаров</h2>
+
+    {% if perms.shopapp.add_product %}
+        <p><a href="{% url 'shopapp:product_create' %}">+ Создать новый продукт</a></p>
+    {% endif %}
+
+    {% if object_list %}
+        <ul>
+            {% for product in object_list %}
+                <li>
+                    <a href="{% url 'shopapp:product_detail' pk=product.pk %}">
+                        <strong>{{ product.name|title }}</strong>
+                    </a><br>
+                    Описание: {{ product.description|default:"—"|truncatechars:80 }}<br>
+                    Цена: {{ product.price|floatformat:2 }} ₽<br>
+                    Скидка: {{ product.discount }} %<br>
+                    На складе: {{ product.quantity }} шт.<br>
+                    Опубликован: {{ product.is_published|yesno:"да,нет" }}
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Товаров пока нет.</p>
+    {% endif %}
+{% endblock %}

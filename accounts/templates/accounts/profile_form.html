@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Обновление профиля</h1>
+
+{% if object.avatar %}
+    <p>Текущий аватар:</p>
+    <img src="{{ object.avatar.url }}" alt="avatar" width="150">
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>
+
+<a href="{% url 'accounts:user_detail' object.user.pk %}">← Назад</a>
+{% endblock %}

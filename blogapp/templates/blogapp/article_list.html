@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Статьи{% endblock %}
+
+{% block content %}
+<h1>Статьи</h1>
+
+{% if articles %}
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h2>{{ article.title }}</h2>
+                <p><strong>Дата публикации:</strong> {{ article.pub_date|date:"d.m.Y H:i" }}</p>
+                <p><strong>Автор:</strong> {{ article.author.name }}</p>
+                <p><strong>Категория:</strong> {{ article.category.name }}</p>
+                <p><strong>Тэги:</strong>
+                    {% for tag in article.tags.all %}
+                        {{ tag.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        —
+                    {% endfor %}
+                </p>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Статей пока нет.</p>
+{% endif %}
+{% endblock %}

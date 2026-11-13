@@ -1,0 +1,21 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+    <h2>{{ object.name|title }}</h2>
+
+    <p>Описание: {{ object.description|default:"—" }}</p>
+    <p>Цена: {{ object.price|floatformat:2 }} ₽</p>
+    <p>Скидка: {{ object.discount }} %</p>
+    <p>На складе: {{ object.quantity }} шт.</p>
+    <p>Опубликован: {{ object.is_published|yesno:"да,нет" }}</p>
+    <p>В архиве: {{ object.archived|yesno:"да,нет" }}</p>
+    <p>Создан: {{ object.created_at|date:"d.m.Y H:i" }}</p>
+
+    <hr>
+
+    <p><a href="{% url 'shopapp:products_list' %}">← К списку товаров</a></p>
+    <p><a href="{% url 'shopapp:product_update' pk=object.pk %}">✎ Редактировать</a></p>
+    <p><a href="{% url 'shopapp:product_archive' pk=object.pk %}">🗑 Архивировать</a></p>
+{% endblock %}

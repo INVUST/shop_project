@@ -1,0 +1,34 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+    <h2>Список заказов</h2>
+
+    <p><a href="{% url 'shopapp:order_create' %}">+ Создать новый заказ</a></p>
+
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li>
+                    Заказ #{{ order.pk }}<br>
+                    Пользователь: <strong>{{ order.user.username }}</strong><br>
+                    Адрес: {{ order.delivery_address|default:"—" }}<br>
+                    Промокод: {{ order.promo_code|default:"нет" }}<br>
+                    Создан: {{ order.created_at|date:"d.m.Y H:i" }}<br>
+                    Товары:
+                    <ul>
+                        {% for product in order.products.all %}
+                            <li>{{ product.name }} — {{ product.price|floatformat:2 }} ₽</li>
+                        {% empty %}
+                            <li>Нет товаров</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Заказов пока нет. Запустите: <code>python manage.py create_orders</code></p>
+    {% endif %}
+{% endblock %}

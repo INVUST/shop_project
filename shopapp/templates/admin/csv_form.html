@@ -1,0 +1,10 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<h1>Импорт заказов из CSV</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Импортировать</button>
+</form>
+<p><a href="{% url 'admin:shopapp_order_changelist' %}">← Назад к списку заказов</a></p>
+{% endblock %}

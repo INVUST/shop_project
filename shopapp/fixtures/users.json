@@ -1,0 +1,94 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$IzsWC4ufUCS1NwsZfBupHB$bCeXr8KsDdAmmVVg6yZtX2XKudyA7QAslTZcqgWaDCg=",
+    "last_login": "2026-11-03T18:38:03.210Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-09T04:40:56.622Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$C7POxA8wL7PLGwgPxzMPi3$9h51FSBMoK5In0K1CWyVunyNJc4TtST81mnyxA4myLs=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "denis_yarygin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-29T14:23:07.558Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$oK0yilnWx0FwEcOKCxpsdB$tB0dqQ+SltPtHohichFeB0Gx4WgP9uq/4WYFQjsK2BQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "test",
+    "first_name": "",
+    "last_name": "",
+    "email": "test@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-03T18:06:47.741Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$5rBk6eDZFvllQVD0SoTmFZ$1eL0oWTRvno1yIWBvMOf++VJdtdv2N4sxS2+ie4Pv8E=",
+    "last_login": "2026-11-03T18:08:50.855Z",
+    "is_superuser": false,
+    "username": "test2",
+    "first_name": "",
+    "last_name": "",
+    "email": "test@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-03T18:08:37.358Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$Z1IgOqSEr3ujdydPprYOvd$lhkNY2VPhiEH6uCADfj9cfhp4vT4qfAo91ArYurC5O8=",
+    "last_login": "2026-11-03T18:42:31.716Z",
+    "is_superuser": false,
+    "username": "test3",
+    "first_name": "",
+    "last_name": "",
+    "email": "test3@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-11-03T18:19:19Z",
+    "groups": [],
+    "user_permissions": [
+      26
+    ]
+  }
+}
+]

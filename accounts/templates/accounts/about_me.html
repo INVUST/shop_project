@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Обо мне{% endblock %}
+
+{% block content %}
+<h1>Обо мне</h1>
+
+{% if user.profile.avatar %}
+    <img src="{{ user.profile.avatar.url }}" alt="avatar" width="150">
+{% else %}
+    <p>Аватар не установлен.</p>
+{% endif %}
+
+<p><strong>Логин:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Bio:</strong> {{ user.profile.bio|default:"—" }}</p>
+
+<hr>
+
+<h2>Сменить аватар</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>
+
+<p><a href="{% url 'accounts:user_list' %}">Список пользователей</a></p>
+{% endblock %}

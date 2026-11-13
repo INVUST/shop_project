@@ -1,0 +1,33 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}{{ title|title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ title|capfirst }}</h2>
+
+    {# ТЕГ 1: if #}
+    {% if products %}
+        <p>Всего товаров: <strong>{{ products|length }}</strong></p>
+
+        <ul>
+            {# ТЕГ 2: for #}
+            {% for product in products %}
+                <li>
+                    {{ product.name|upper }}
+                    — цена: {{ product.price|floatformat:2 }} ₽
+                </li>
+            {% empty %}
+                <li>Товаров пока нет</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Список товаров пуст.</p>
+    {% endif %}
+
+    {# ТЕГ 3: with #}
+    {% with total=products|length %}
+        <p>Позиций в каталоге: {{ total }}</p>
+    {% endwith %}
+
+    <p>Текущее время: {% now "H:i" %}</p>
+{% endblock %}

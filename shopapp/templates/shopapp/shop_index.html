@@ -1,0 +1,12 @@
+{% extends "shopapp/base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <h2>Доступные страницы</h2>
+    <ul>
+        {% for link in links %}
+            <li><a href="{% url link.url_name %}">{{ link.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

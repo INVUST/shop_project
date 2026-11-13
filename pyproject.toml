@@ -1,0 +1,19 @@
+[project]
+name = "mysite"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "denis_yarygin",email = "arygin883@yandex.ru"}
+]
+requires-python = ">=3.12"
+dependencies = [
+    "django (>=6.1.3,<7.0.0)",
+    "djangorestframework (>=3.18.3,<4.0.0)",
+    "django-filter (>=26.2,<27.0)",
+    "pillow (>=13.0.0,<14.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

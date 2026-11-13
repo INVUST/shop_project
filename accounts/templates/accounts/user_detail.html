@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Профиль: {{ profile_user.username }}</h1>
+
+{% if profile_user.profile.avatar %}
+    <img src="{{ profile_user.profile.avatar.url }}" alt="avatar" width="150">
+{% else %}
+    <p>Аватар не установлен.</p>
+{% endif %}
+
+<p><strong>Bio:</strong> {{ profile_user.profile.bio|default:"—" }}</p>
+<p><strong>Location:</strong> {{ profile_user.profile.location|default:"—" }}</p>
+<p><strong>Дата рождения:</strong> {{ profile_user.profile.birth_date|default:"—" }}</p>
+
+{% if user.is_staff or user == profile_user %}
+    <p><a href="{% url 'accounts:profile_update' profile_user.pk %}">Обновить профиль</a></p>
+{% endif %}
+
+<p><a href="{% url 'accounts:user_list' %}">← К списку пользователей</a></p>
+{% endblock %}
